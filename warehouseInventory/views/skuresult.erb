@@ -1,0 +1,40 @@
+<% if @sku.present? %>
+    <h3><%= @message %></h3>
+    <table>
+      <thead>
+      <tr>
+        <td>SKU</td>
+        <td>Name</td>
+        <td>Quantity</td>
+      </thead>
+      <tbody>
+      <% @sku.each do |sku| %>
+          <tr>
+            <td><%= sku.item %></td>
+            <td><%= sku.status %></td>
+            <td><%= sku.quantity %></td>
+      <% end %>
+      </tbody>
+      </table>
+
+      <% if @order.present? %>
+          <h3>Orders</h3>
+        <table>
+            <thead>
+            <tr>
+              <td>SKU</td>
+              <td>Name</td>
+              <td>Quantity</td>
+            </thead>
+            <tbody>
+                <tr>
+                  <td><%= @order.item %></td>
+                  <td><%= @order.address %></td>
+                  <td><%= @order.quantity %></td>
+            </tbody>
+        </table>
+      <% end %>
+
+<% else %>
+    <h3><%= @message %></h3>
+<% end %>

@@ -1,0 +1,26 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" xmlns="http://www.w3.org/1999/html"></script>
+<script>
+    $(document).ready(function () {
+        $("#signup").click( function () {
+            $('#signpage').attr('action', '/signin');
+            $('#signpage').submit();
+        });
+        $("#login").click( function () {
+            $('#signpage').attr('action', '/login');
+            $('#signpage').submit();
+        });
+    });
+
+</script>
+<form id="signpage" method="post">
+  <fieldset>
+    <p><label for="username" class="username">Username</label><input id="username" maxlength="100" name="username" size="25" type="text"></p>
+    <p><label for="password" class="password">Password</label><input maxlength="25" name="password" size="25" type="password"></p>
+    <input name="sellerid" type="hidden" value="5" >
+    <p><span><input type="button" id="signup" value="Sign Up"></span>
+      <br><span><input type="button" id="login" value="Login"> If you already signed up please login.
+    </span>
+    </p>
+  </fieldset>
+</form>
+

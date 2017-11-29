@@ -1,0 +1,70 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<% if @user.present? %>
+<script>
+    $(document).ready(function () {
+        $("#deleteUserBtn").click(function () {
+            console.log("delete user");
+            $('#main').html("");
+            var url = "/user";
+            $.ajax({
+                type: 'delete',
+                url: url + '/<%= @user.id %>',
+                success: function (result) {
+                    $('#main').html(result);
+                }
+            });
+        });
+        $("#updateUserBtn").click(function () {
+            console.log("update user");
+            $('#main').html("");
+            var url = "/user";
+            $.ajax({
+                type: 'put',
+                url: url + '/<%= @user.id %>'/$('#notify').val(),
+                success: function (result) {
+                    $('#main').html(result);
+                }
+            });
+        });
+    });
+</script>
+<body>
+
+<div id='main'>
+  <p>
+  <h3>User Details</h3>
+  <ul>
+    <li>Username : <%= @user.username %></li>
+    <li>Created: <%= @user.created_at %></li>
+    <li>Token : <%= @user.token %></li>
+    <li>Delete User : <input type="button" id="deleteUserBtn" value="delete user"></li>
+  </ul>
+
+  <h3>API Instructions</h3>
+    <p>Note : If the token does not match "Invalid Token" will be displayed and no action will be taken.</p>
+    <ul>
+       <li>All API calls must include the token provided above.</li>
+      <li> <b>To view status list of all inventory:</b>
+        Example curl -H "token: <%= @user.token %>" http://example.com/api/inventory/</li>
+      <li><b>To view a specific item's inventory:</b>
+        Example curl -H "token: <%= @user.token %>" http://example.com/api/inventory/{item-sku}
+      </li>
+      <li><b>To replenish specific item's inventory:</b>
+        Example curl -H "token: <%= @user.token %>" http://example.com/api/inventory/{item-sku}
+      </li>
+      <li><b>To place order for shipment:</b>
+        Example curl -H "token: <%= @user.token %>" http://example.com/api/inventory/{item-sku}
+      </li>
+
+  </ul>
+  </p>
+</div>
+<% else %>
+    <h3><%= @message %></h3>
+<% end %>
+
+</body>
+
+
+
+
