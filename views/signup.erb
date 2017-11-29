@@ -50,10 +50,12 @@
         Example curl -H "token: <%= @user.token %>" http://example.com/api/inventory/{item-sku}
       </li>
       <li><b>To replenish specific item's inventory:</b>
-        Example curl -H "token: <%= @user.token %>" http://example.com/api/inventory/{item-sku}
+        Example
+        curl -X POST http://localhost:4567/api/inventory/ -H 'origin: http://localhost:4567' -H 'token: 386a229d-0a39-447e-a6db-4b91e4e93888' -F qty=20 -F item=A123
       </li>
       <li><b>To place order for shipment:</b>
-        Example curl -H "token: <%= @user.token %>" http://example.com/api/inventory/{item-sku}
+        Example
+        curl -X POST http://localhost:4567/api/orders/ -H 'origin: http://localhost:4567' -H 'token: 386a229d-0a39-447e-a6db-4b91e4e93888' -F qty=5 -F item=A123 -F 'address=test address 100th St'
       </li>
 
   </ul>

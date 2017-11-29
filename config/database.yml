@@ -1,0 +1,10 @@
+
+#ignore
+development:
+
+ adapter: mysql2
+ database: whdb
+ username: root
+ password: root
+ host: localhost
+ port: 3306
